@@ -1,6 +1,6 @@
 🔹 1. Basics (Every DevOps Engineer Should Know)
-
 What is Terraform?
+
 IaC tool (Infrastructure as Code) → declarative, idempotent, provider-agnostic.
 
 Core Concepts
@@ -11,146 +11,231 @@ Resources → actual infra components (EC2, S3, VPC, EKS).
 
 State File (terraform.tfstate) → stores real infra mapping.
 
-Variables → input variables for reusability.
+Terraform Block (terraform {}) → defines version & backend.
+
+Variables → input values for reusability.
 
 Outputs → return values (public_ip, DNS).
 
 Locals → computed values.
 
+Resource Lifecycle
+
+create_before_destroy → avoids downtime.
+
+prevent_destroy → protects critical resources.
+
+Backends
+
+Local → default (on disk).
+
+Remote → S3, GCS, Azure Blob, Terraform Cloud.
+
 Basic Commands
 
-terraform init → initialize backend & providers
+terraform init → initialize backend & providers.
 
-terraform plan → preview changes
+terraform plan → preview changes.
 
-terraform apply → create infra
+terraform apply → create infra.
 
-terraform destroy → delete infra
+terraform destroy → delete infra.
 
-terraform validate → validate code
+terraform validate → validate code.
 
-terraform fmt → format code
+terraform fmt → format code.
 
-✅ This is the foundation every DevOps engineer must know.
+✅ Foundation every DevOps engineer must know.
 
-🔹 2. Medium Concepts
-
+🔹 2. Medium-Level Concepts
 Terraform Registry
 
-Official + Community modules (AWS VPC, EKS, etc.)
+Official + Community modules (AWS VPC, EKS, etc.).
 
-Reuse existing modules instead of writing from scratch
+Reuse existing modules instead of writing from scratch.
 
 Terraform CLI Useful Commands
 
-terraform show → show resources
+terraform show → show resources.
 
-terraform state list → list resources in state
+terraform state list → list resources in state.
 
-terraform state rm → remove from state
+terraform state rm → remove from state.
 
-terraform taint → force recreate a resource
+terraform taint → force recreate a resource.
 
-terraform graph → visualize dependency graph
+terraform graph → visualize dependency graph.
 
 Terraform Modules
 
-Reusable code blocks (Best practice for production)
+Reusable code blocks (Best practice for production).
 
-Structure → main.tf, variables.tf, outputs.tf
+Structure → main.tf, variables.tf, outputs.tf.
 
-Terraform Remote State
+Remote State
 
-Store state in S3, lock with DynamoDB
+Store state in S3, lock with DynamoDB.
 
-Avoids local state conflicts in teams
+Avoids local conflicts in teams.
 
-✅ This level prepares you for team projects & CI/CD integration.
+File Organization
+
+Split configs → provider.tf, backend.tf, variables.tf, outputs.tf.
+
+Environment Variables
+
+TF_VAR_name → auto-loads into variables.
+
+AWS_PROFILE, GOOGLE_APPLICATION_CREDENTIALS → provider auth.
+
+Lock Files
+
+.terraform.lock.hcl → locks provider versions.
+
+CLI Config
+
+~/.terraformrc or CLI_CONFIG_FILE → creds helper, registry mirror.
+
+✅ Medium level prepares you for team projects & CI/CD integration.
 
 🔹 3. Advanced Concepts (DevOps Specific)
-
 Terraform Functions
 
-file(), lookup(), join(), merge(), base64encode()
+file(), lookup(), join(), merge(), base64encode().
 
 Conditional Expressions
-
 count = var.enabled ? 1 : 0
 
-For Each & Count
+Count vs For-Each
 
-Create multiple resources dynamically
+count → index-based multiple resources.
+
+for_each → map/set-based infra creation.
 
 Dynamic Blocks
 
-Used in complex resources (security groups, IAM policies)
+Used in complex resources (security groups, IAM policies).
 
 Data Sources
 
-Fetch existing infra (ex: data "aws_ami")
+Fetch existing infra (ex: data "aws_ami").
+
+Import
+
+terraform import aws_instance.myec2 i-12345678.
 
 Null Resource + Provisioners
 
-Execute scripts via local-exec / remote-exec
+Run scripts via local-exec / remote-exec.
 
 Workspaces
 
-Manage multiple environments (dev, staging, prod)
+Manage environments (dev, staging, prod).
 
-Terraform Performance
+Lifecycle Meta-Arguments
 
-Use depends_on for ordering
+ignore_changes → don’t overwrite manual changes.
 
-Split state files (per module/project)
+replace_triggered_by → force recreation if dependency changes.
 
-Terraform Testing
+Backend Config Overrides
 
-terraform validate, terraform plan -detailed-exitcode for CI
+terraform init -backend-config=backend.hcl.
 
-Terratest (Go framework) for automated testing
+Plan File
 
-Terraform Custom Providers
+terraform plan -out=tfplan → terraform apply tfplan.
 
-Written in Go for non-supported services
+Performance
 
-✅ These are the hard-hitting interview points most DevOps candidates miss.
+Use depends_on for ordering.
+
+Split state files (per project/module).
+
+Testing
+
+terraform validate, terraform plan -detailed-exitcode.
+
+Terratest (Go) for automated testing.
+
+Drift Detection
+
+Compare real infra vs Terraform state.
+
+Custom Providers
+
+Written in Go for unsupported services.
+
+Terraform Cloud / Enterprise
+
+Remote runs, teams & RBAC.
+
+Sentinel → policy-as-code.
+
+✅ Advanced topics = FAANG panel favorites.
 
 🔹 4. Real-World DevOps Scenarios
-
 Terraform with AWS
 
-Provision EC2, VPC, EKS, S3, ALB, ASG using IaC
+Provision EC2, VPC, EKS, S3, ALB, ASG.
 
-Store state in S3 with DynamoDB locking
+Store state in S3 + DynamoDB locking.
 
 Terraform + Kubernetes (EKS)
 
-Deploy EKS cluster, manage via Terraform provider
+Deploy EKS cluster, manage via kubernetes provider.
 
 Terraform CI/CD
 
-Jenkins/GitHub Actions → terraform fmt → validate → plan → apply
+Jenkins/GitHub Actions → fmt → validate → plan → apply.
 
 Secrets Management
 
-Use SSM Parameter Store / AWS Secrets Manager / Vault
+Use SSM Parameter Store / AWS Secrets Manager / Vault.
 
-Terraform Apply Failure Recovery
+Avoid storing secrets in tfstate.
 
-Re-run apply → Terraform reconciles state
+Failure Recovery
 
-Terraform Upgrade/Downgrade
+If apply fails → rerun. Terraform reconciles state.
 
-Lock Terraform version → required_version
+Version Management
+
+Lock Terraform version → required_version.
 
 Blue-Green Infra
 
-Manage multiple environments via workspaces or modules
+Manage environments via workspaces or modules.
 
 Hybrid Cloud
 
-One Terraform config for AWS + Azure + GCP
+One config for AWS + Azure + GCP.
+
+GitOps with Terraform
+
+Use Atlantis/Spacelift → PR-based infra changes.
+
+State File Security
+
+S3 encryption + IAM restricted access.
+
+Multi-Region Deployments
+
+Provider aliasing →
+
+provider "aws" {
+  alias  = "use1"
+  region = "us-east-1"
+}
+
+Cross-Account Infra
+
+Assume roles via STS + provider alias.
 
 Cost Optimization
 
-Spot instances, lifecycle rules, destroy unused infra
+Use Spot instances.
+
+Lifecycle rules → auto-cleanup unused infra.
+
+✅ Real-world scenarios make you production-ready.
