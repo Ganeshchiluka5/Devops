@@ -1,0 +1,49 @@
+🐧 Linux Complete Topics for DevOps Interviews
+
+🔹 1. Basics
+- Linux distributions (Ubuntu, CentOS, RHEL, Debian)
+- File system hierarchy (/bin, /etc, /var, /home, /tmp, /usr)
+- File/Directory operations → ls, pwd, cd, cp, mv, rm, mkdir, rmdir, touch
+- File viewing → cat, head, tail, less, more, nano, vim
+- User commands → whoami, id, who, adduser, passwd
+
+🔹 2. Medium (Day-to-Day DevOps work)
+- File permissions → chmod, chown, groups, umask
+- Process management → ps aux, top, kill, jobs, fg, bg
+- Searching & filtering → grep, find, awk, sed
+- Disk monitoring → df -h, du -sh, lsblk, mount
+- Networking basics → ping, curl, wget, netstat, ss, ifconfig, ip addr
+- Logs monitoring → /var/log/, tail -f, journalctl
+- Environment variables → echo $PATH, export VAR=value, .bashrc
+- File redirection & pipes → >, >>, 2>, |, tee
+
+🔹 3. Advanced (Real-time Admin Level)
+- Shell scripting → loops, conditions, variables, functions
+- Package management → yum, apt, rpm, dpkg
+- Cron jobs → crontab -e, /etc/cron.d
+- Services management → systemctl start/stop/enable/status
+- Monitoring performance → uptime, free -m, vmstat, iostat, sar
+- SSH, SCP, Rsync → secure login, copy, sync files
+- Archiving/Compression → tar, gzip, zip, unzip
+- SELinux / AppArmor basics
+- Hostname & DNS configs → /etc/hosts, /etc/resolv.conf
+- Kernel & system info → uname -r, /proc/cpuinfo, /proc/meminfo
+
+🔹 4. Interview-Oriented Scenarios
+- Disk full issue → find & clean large files (du, df)
+- Port conflict → check with lsof, netstat, ss
+- Website down troubleshooting → ping, curl, logs
+- High CPU/memory usage → top, ps aux --sort=-%mem
+- Hard link vs Soft link → difference
+- Script to monitor a log file and send alert
+- Script to find top 5 CPU-consuming processes
+
+🚨 What’s Missing? (Minor but Useful for Tough Interviews)
+⚠️ These are rarely asked, but advanced companies sometimes test:
+- LVM (Logical Volume Management) basics → pvcreate, vgcreate, lvcreate
+- Inodes concept (disk structure, df -i)
+- Linux boot process (BIOS → Bootloader → Kernel → Init → systemd)
+- Firewall basics → firewalld, iptables, ufw
+- Swap space check → swapon -s, free -m
+- File descriptors (ulimit -n)
+- Signals (kill -l)
