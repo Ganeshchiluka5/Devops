@@ -1,0 +1,183 @@
+🔹 1. Basics (Every DevOps Engineer Must Know)
+
+IAM
+
+Users, Groups, Roles
+
+IAM Roles for EC2, EKS, CodePipeline
+
+Least privilege principle
+
+MFA for security
+
+EC2
+
+Launch instances → Jenkins, Docker runners
+
+User Data scripts → bootstrap tools
+
+EBS Volumes → snapshots for backup
+
+VPC Basics
+
+Public Subnet → ALB, Bastion hosts
+
+Private Subnet → Apps, DBs
+
+NAT Gateway → private → internet access
+
+Route Tables → traffic routing
+
+Security Groups vs NACLs
+
+S3
+
+Store artifacts, logs, Terraform state
+
+Versioning + Lifecycle policies
+
+Cross-region replication
+
+Route53
+
+DNS → domain management
+
+Weighted routing (blue/green, canary)
+
+Failover routing
+
+🔹 2. CI/CD Related AWS Services
+
+CodeCommit → Git repo (alt: GitHub)
+
+CodeBuild → build/test code (like Jenkins agent)
+
+CodeDeploy → deploy to EC2, Lambda, ECS
+
+CodePipeline → CI/CD orchestrator
+
+ECR → Docker image registry
+
+IAM + KMS → secure pipeline secrets
+
+🔹 3. Infra as Code (IaC)
+
+CloudFormation → AWS native IaC
+
+Terraform (industry standard)
+
+Store remote state in S3
+
+Enable state locking with DynamoDB
+
+Organize modules for reusability
+
+🔹 4. Containers & Orchestration
+
+ECS → AWS container orchestration (less common in interviews)
+
+EKS → Kubernetes on AWS (most companies use this)
+
+Managed Control Plane
+
+Worker nodes → EC2 or Fargate
+
+IAM Roles for Service Accounts (IRSA)
+
+Ingress Controller + ALB for traffic
+
+ECR → private container image registry
+
+🔹 5. Monitoring & Logging
+
+CloudWatch
+
+Metrics → CPU, Memory (custom)
+
+Logs → app/system logs
+
+Alarms → triggers scaling/alerts
+
+CloudTrail → who did what in AWS (auditing)
+
+X-Ray → app tracing
+
+EventBridge → event-driven workflows
+
+🔹 6. Networking & Scaling
+
+ELB (ALB/NLB) → traffic distribution
+
+Auto Scaling Groups → handle demand automatically
+
+VPC Peering / Transit Gateway → multi-VPC connectivity
+
+CloudFront → CDN (for static content, caching)
+
+Direct Connect → on-prem to AWS
+
+🔹 7. Security & Secrets Management
+
+Secrets Manager → store DB creds, API keys (auto-rotation)
+
+SSM Parameter Store → configs/parameters
+
+KMS → encrypt S3, EBS, RDS data
+
+SSM Session Manager → access EC2 without SSH
+
+🔹 8. Storage & Databases (DevOps Relevant)
+
+EBS → block storage (snapshots, resize)
+
+EFS → shared NFS storage (useful for Jenkins/EKS logs)
+
+RDS → managed DBs, Multi-AZ, backups
+
+DynamoDB → Terraform state locking, event-driven apps
+
+🔹 9. Advanced (Production/Interview Focus)
+
+Blue-Green Deployments → CodeDeploy + ALB target groups
+
+Canary Deployments → Route53 weighted routing
+
+Serverless CI/CD → Lambda + API Gateway + CodePipeline
+
+Disaster Recovery →
+
+S3 cross-region replication
+
+RDS Multi-AZ + Read Replicas
+
+Route53 Failover
+
+Cost Optimization
+
+Spot instances for Jenkins runners
+
+Right-size EKS nodes
+
+S3 lifecycle policies
+
+🔹 10. Common Interview Scenarios (Must-Practice)
+
+CI/CD Pipeline → CodePipeline + CodeBuild + CodeDeploy + ECR + ECS/EKS
+
+App Deployment → Docker → push to ECR → deploy to EKS (IaC with Terraform)
+
+Terraform Remote State → S3 + DynamoDB locking
+
+Kubernetes on AWS → EKS + ALB Ingress + CloudWatch monitoring
+
+Secrets Management → Secrets Manager vs Parameter Store
+
+Auto Scaling → ASG + ALB across Multi-AZ
+
+Monitoring → CloudWatch + Prometheus + Grafana
+
+DR Plan → Multi-region RDS, Route53 failover, S3 replication
+
+Secure Pipelines → IAM roles, KMS encryption, CodeBuild env vars
+
+Blue-Green/Canary → ALB + Route53 weighted routing
