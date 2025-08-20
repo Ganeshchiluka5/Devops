@@ -1,0 +1,156 @@
+🔹 1. Basics (Every DevOps Engineer Should Know)
+
+What is Terraform?
+IaC tool (Infrastructure as Code) → declarative, idempotent, provider-agnostic.
+
+Core Concepts
+
+Providers → AWS, Azure, GCP, Kubernetes, etc.
+
+Resources → actual infra components (EC2, S3, VPC, EKS).
+
+State File (terraform.tfstate) → stores real infra mapping.
+
+Variables → input variables for reusability.
+
+Outputs → return values (public_ip, DNS).
+
+Locals → computed values.
+
+Basic Commands
+
+terraform init → initialize backend & providers
+
+terraform plan → preview changes
+
+terraform apply → create infra
+
+terraform destroy → delete infra
+
+terraform validate → validate code
+
+terraform fmt → format code
+
+✅ This is the foundation every DevOps engineer must know.
+
+🔹 2. Medium Concepts
+
+Terraform Registry
+
+Official + Community modules (AWS VPC, EKS, etc.)
+
+Reuse existing modules instead of writing from scratch
+
+Terraform CLI Useful Commands
+
+terraform show → show resources
+
+terraform state list → list resources in state
+
+terraform state rm → remove from state
+
+terraform taint → force recreate a resource
+
+terraform graph → visualize dependency graph
+
+Terraform Modules
+
+Reusable code blocks (Best practice for production)
+
+Structure → main.tf, variables.tf, outputs.tf
+
+Terraform Remote State
+
+Store state in S3, lock with DynamoDB
+
+Avoids local state conflicts in teams
+
+✅ This level prepares you for team projects & CI/CD integration.
+
+🔹 3. Advanced Concepts (DevOps Specific)
+
+Terraform Functions
+
+file(), lookup(), join(), merge(), base64encode()
+
+Conditional Expressions
+
+count = var.enabled ? 1 : 0
+
+For Each & Count
+
+Create multiple resources dynamically
+
+Dynamic Blocks
+
+Used in complex resources (security groups, IAM policies)
+
+Data Sources
+
+Fetch existing infra (ex: data "aws_ami")
+
+Null Resource + Provisioners
+
+Execute scripts via local-exec / remote-exec
+
+Workspaces
+
+Manage multiple environments (dev, staging, prod)
+
+Terraform Performance
+
+Use depends_on for ordering
+
+Split state files (per module/project)
+
+Terraform Testing
+
+terraform validate, terraform plan -detailed-exitcode for CI
+
+Terratest (Go framework) for automated testing
+
+Terraform Custom Providers
+
+Written in Go for non-supported services
+
+✅ These are the hard-hitting interview points most DevOps candidates miss.
+
+🔹 4. Real-World DevOps Scenarios
+
+Terraform with AWS
+
+Provision EC2, VPC, EKS, S3, ALB, ASG using IaC
+
+Store state in S3 with DynamoDB locking
+
+Terraform + Kubernetes (EKS)
+
+Deploy EKS cluster, manage via Terraform provider
+
+Terraform CI/CD
+
+Jenkins/GitHub Actions → terraform fmt → validate → plan → apply
+
+Secrets Management
+
+Use SSM Parameter Store / AWS Secrets Manager / Vault
+
+Terraform Apply Failure Recovery
+
+Re-run apply → Terraform reconciles state
+
+Terraform Upgrade/Downgrade
+
+Lock Terraform version → required_version
+
+Blue-Green Infra
+
+Manage multiple environments via workspaces or modules
+
+Hybrid Cloud
+
+One Terraform config for AWS + Azure + GCP
+
+Cost Optimization
+
+Spot instances, lifecycle rules, destroy unused infra
