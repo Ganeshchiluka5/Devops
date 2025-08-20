@@ -1,0 +1,2 @@
+# Devops
+ALL practicals
