@@ -1,0 +1,232 @@
+1. Basics (Every DevOps Engineer Must Know)
+
+What is Kubernetes (K8s)?
+
+Open-source container orchestration platform.
+
+Automates deployment, scaling, healing, networking of containerized apps.
+
+Created by Google, now maintained by CNCF.
+
+Core Components
+
+Control Plane
+
+API Server → entrypoint (kubectl → API calls).
+
+etcd → key-value store for cluster state.
+
+Controller Manager → reconciles desired vs actual state.
+
+Scheduler → assigns pods to nodes.
+
+Worker Nodes
+
+kubelet → talks to API server, runs containers.
+
+kube-proxy → manages networking/routing.
+
+Container runtime → Docker/Containerd/CRI-O.
+
+Basic Resources
+
+Pod → smallest deployable unit (1+ containers).
+
+ReplicaSet → ensures desired pod replicas.
+
+Deployment → manages pods + ReplicaSets (rolling updates).
+
+Service → exposes pods: ClusterIP, NodePort, LoadBalancer.
+
+Namespace → logical separation of resources.
+
+ConfigMap & Secret → configs & sensitive data.
+
+Basic Commands
+
+kubectl get nodes
+kubectl get pods -A
+kubectl describe pod <pod>
+kubectl logs <pod>
+kubectl exec -it <pod> -- bash
+kubectl apply -f deployment.yaml
+kubectl delete -f deployment.yaml
+
+
+✅ Must-know foundation.
+
+🔹 2. Medium-Level Concepts (Practical Usage)
+
+Networking
+
+ClusterIP → default, internal-only.
+
+NodePort → expose service on each node’s port.
+
+LoadBalancer → external access via cloud LB.
+
+Ingress → single LB with host/path-based routing.
+
+Storage
+
+Volumes → pod-scoped, lifecycle-bound.
+
+PersistentVolume (PV) → cluster-wide storage resource.
+
+PersistentVolumeClaim (PVC) → pod’s request for storage.
+
+StorageClass → dynamic provisioning.
+
+Scaling
+
+HPA (Horizontal Pod Autoscaler) → scales pods based on CPU/memory/custom metrics.
+
+VPA (Vertical Pod Autoscaler) → adjusts pod resources.
+
+Cluster Autoscaler → scales nodes dynamically.
+
+Labels & Selectors
+
+Labels → key-value identifiers.
+
+Selectors → group resources by labels.
+
+✅ Prepares you for daily production work.
+
+🔹 3. Advanced Concepts (FAANG-Level)
+
+Workload Controllers
+
+DaemonSet → 1 pod per node (logging/monitoring agents).
+
+StatefulSet → ordered, stable identity (DBs, Kafka).
+
+Job / CronJob → one-time or scheduled workloads.
+
+Advanced Networking
+
+Network Policies → control pod-to-pod communication.
+
+CNI Plugins → Calico, Flannel, Cilium.
+
+Service Mesh → Istio/Linkerd (traffic control, mTLS).
+
+Security
+
+RBAC → Roles, ClusterRoles, Bindings.
+
+Service Accounts → identity for pods.
+
+Pod Security Standards (PSS) → baseline, restricted.
+
+Secrets Encryption → encrypt secrets in etcd.
+
+Admission Controllers → enforce policies.
+
+Observability
+
+Metrics Server → CPU/memory metrics.
+
+Prometheus + Grafana → monitoring & alerts.
+
+EFK/ELK Stack → centralized logging.
+
+Jaeger/Zipkin → distributed tracing.
+
+CI/CD & GitOps
+
+Deploy via Jenkins, GitHub Actions.
+
+GitOps tools: ArgoCD, Flux.
+
+Helm / Kustomize for templating.
+
+Cluster Management
+
+Namespaces per environment (dev/stage/prod).
+
+Multi-cluster management → Rancher, Anthos.
+
+Upgrades with zero downtime.
+
+✅ These are senior-level interview favorites.
+
+🔹 4. Real-World DevOps Scenarios
+
+Blue-Green Deployment → run v1 & v2, switch traffic.
+
+Canary Deployment → roll out to % of users first.
+
+Rolling Updates/Rollbacks → zero-downtime updates.
+
+Secrets Rotation → integrate with Vault/AWS Secrets Manager.
+
+Multi-Cluster Setup → HA across regions.
+
+Disaster Recovery → etcd backup/restore.
+
+Resource Limits → enforce CPU/memory quotas.
+
+Cost Optimization → scale-to-zero, spot nodes.
+
+Hybrid Cloud → workloads across AWS + GCP + Azure.
+
+✅ Shows real production experience.
+
+🔹 5. High Availability (HA) & Security
+
+HA Setup
+
+Multi-master clusters with etcd quorum.
+
+Load balancer in front of API servers.
+
+etcd backups (snapshot + restore).
+
+Security Best Practices
+
+Use RBAC strictly.
+
+Run pods as non-root.
+
+Network policies → whitelist traffic.
+
+Enable audit logging.
+
+Rotate secrets & certificates.
+
+🔹 6. Common Interview Questions
+
+Explain Kubernetes architecture.
+
+Pod vs Deployment vs ReplicaSet vs StatefulSet?
+
+ClusterIP vs NodePort vs LoadBalancer vs Ingress?
+
+How does pod-to-pod communication work?
+
+Explain HPA vs VPA vs Cluster Autoscaler.
+
+ConfigMap vs Secret?
+
+DaemonSet use cases?
+
+How do you persist data for pods?
+
+What is a Service Mesh and why use it?
+
+Explain RBAC in Kubernetes.
+
+How do you secure secrets in Kubernetes?
+
+How do you monitor & log Kubernetes workloads?
+
+How do you implement Blue-Green/Canary deployments?
+
+How do you recover from etcd failure?
+
+Kubernetes vs Docker Swarm?
+
+✅ With this sheet → you’re FAANG-level Kubernetes interview ready.
+💡 Example pitch:
+“In Gamazon project, we deployed microservices on EKS. Each service had its own Deployment & Service, exposed via Ingress. We used HPA for autoscaling, ConfigMaps/Secrets for configs, and Prometheus + Grafana for monitoring. For deployments, we used Canary strategy with automated rollback if health checks failed. Secrets were integrated with AWS Secrets Manager, and cluster autoscaler optimized costs by scaling spot instances.”
