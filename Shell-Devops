@@ -1,0 +1,226 @@
+🔹 1. Basics (Every DevOps Engineer Must Know)
+
+What is Shell Scripting?
+
+A shell script is a program written for the Unix/Linux shell (bash, sh, zsh, etc.).
+
+Used to automate repetitive tasks, manage systems, and run DevOps workflows.
+
+Popular Shells
+
+sh (Bourne Shell)
+
+bash (Bourne Again Shell → most used)
+
+zsh, ksh, fish
+
+Basic Commands
+
+#!/bin/bash         # shebang (specifies interpreter)
+echo "Hello World"  # print
+pwd                 # print working directory
+ls -l               # list files
+
+
+Execution
+
+chmod +x script.sh   # make executable
+./script.sh          # run script
+bash script.sh       # run with bash
+
+
+✅ Foundation for automation scripts.
+
+🔹 2. Medium-Level Concepts (Practical DevOps Usage)
+
+Variables
+
+name="Ganesh"
+echo "Hello $name"
+
+
+User Input
+
+read -p "Enter your name: " user
+echo "Welcome $user"
+
+
+Conditional Statements
+
+if [ $age -ge 18 ]; then
+  echo "Adult"
+else
+  echo "Minor"
+fi
+
+
+Loops
+
+for i in {1..5}; do echo "Loop $i"; done
+
+while true; do echo "Running..."; sleep 1; done
+
+
+Functions
+
+greet() {
+  echo "Hello $1"
+}
+greet Ganesh
+
+
+Arguments
+
+echo "First arg: $1"
+echo "Total args: $#"
+
+
+Exit Codes
+
+0 → success
+
+1 → general error
+
+$? → last command exit status
+
+Debugging
+
+bash -x script.sh
+
+
+✅ Covers 90% of DevOps shell scripting tasks.
+
+🔹 3. Advanced Concepts (FAANG-Level)
+
+Arrays
+
+arr=("one" "two" "three")
+echo ${arr[1]}   # prints "two"
+
+
+String Operations
+
+str="DevOps"
+echo ${#str}        # length
+echo ${str:0:3}     # substring
+echo ${str/Dev/Cloud}  # replace
+
+
+File Operations
+
+cat file.txt
+grep "error" log.txt
+awk '{print $1}' data.txt
+sed 's/foo/bar/g' file.txt
+
+
+Error Handling
+
+set -e   # exit on error
+trap "echo Error at line $LINENO" ERR
+
+
+Cron Jobs (Scheduling)
+
+crontab -e
+# Run every day at 2 AM
+0 2 * * * /home/user/backup.sh
+
+
+System Monitoring
+
+df -h       # disk usage
+top         # processes
+uptime      # system load
+free -m     # memory usage
+
+
+SSH Automation
+
+ssh user@host "uptime"
+scp file.txt user@host:/tmp/
+
+
+CI/CD Integration
+
+Pre/post hooks in Git.
+
+Build/deploy steps in Jenkins/GitHub Actions.
+
+Entry points in Docker containers.
+
+✅ These topics are frequent FAANG interview checks.
+
+🔹 4. Real-World DevOps Scenarios
+
+Automation Scripts → start/stop services, rotate logs, cleanup temp files.
+
+Provisioning → bootstrap servers with shell scripts (cloud-init).
+
+CI/CD → pre-build validations, artifact packaging.
+
+Monitoring → custom health checks + alerting.
+
+Log Parsing → grep/awk/sed for real-time log analysis.
+
+Kubernetes → helper scripts for kubectl automation.
+
+Docker → entrypoint scripts for container initialization.
+
+Backup/Restore → automated database and file backups.
+
+User Management → create users, rotate passwords.
+
+✅ Shows hands-on production experience.
+
+🔹 5. Security & Best Practices
+
+Always use #!/bin/bash at top.
+
+Use set -euo pipefail (strict mode).
+
+Quote variables → "$var" to avoid word splitting.
+
+Never store secrets in plain text → use Vault/SSM.
+
+Log errors and exit with proper exit codes.
+
+Modularize scripts with functions.
+
+Version-control scripts (GitHub).
+
+🔹 6. Common Interview Questions (DevOps-Focused)
+
+Difference between sh, bash, zsh?
+
+How do you make a script executable?
+
+How do you pass arguments to a shell script?
+
+Difference between "$*" and "$@"?
+
+How do you check exit status of a command?
+
+Difference between > and >> redirection?
+
+Explain pipes (|) and filters (grep, awk, sed).
+
+How do you debug a shell script?
+
+How do you schedule a job using cron?
+
+What is trap in shell scripting?
+
+How do you use arrays in bash?
+
+How do you parse JSON/YAML in shell scripts?
+
+How do you automate SSH tasks in a script?
+
+How do you integrate shell scripts with Jenkins pipelines?
+
+How do you secure shell scripts handling secrets?
+
+🔹 7. Example Pitch (Interview-Ready)
+
+“In my Gamazon project, I used shell scripting extensively for automation. For example, I wrote scripts to automate log cleanup, database backups, and Kubernetes deployments. I integrated shell scripts with Jenkins pipelines for pre-build validations and artifact packaging. For monitoring, I created a shell script to check JVM heap usage and trigger alerts via Prometheus. I also used cloud-init shell scripts to bootstrap EC2 instances with necessary dependencies before running Ansible playbooks. All scripts were stored in GitHub, versioned, and secured by avoiding hardcoded secrets.”
