@@ -1,0 +1,224 @@
+🔹 1️⃣ Basics (Every DevOps Engineer Should Know)
+
+What is Ansible?
+
+Open-source Configuration Management + Automation tool.
+
+Written in Python, uses YAML (playbooks).
+
+Agentless → connects via SSH/WinRM.
+
+Idempotent → same playbook can be run multiple times safely.
+
+Core Concepts
+
+Inventory → list of hosts (static or dynamic).
+
+Playbook → YAML file with tasks.
+
+Play → mapping between hosts & tasks.
+
+Task → single unit of work (install pkg, copy file).
+
+Module → building block (yum, apt, service, copy, template).
+
+Ad-Hoc Commands → quick one-liners (not playbooks).
+
+Facts → system properties gathered by Ansible.
+
+Basic Commands
+
+ansible all -m ping -i inventory.ini
+ansible-playbook -i inventory.ini playbook.yml
+ansible-doc -l        # list modules
+ansible-galaxy init myrole
+
+
+✅ Foundation knowledge for every DevOps engineer.
+
+🔹 2️⃣ Medium-Level Concepts (Practical DevOps Usage)
+
+Inventory
+
+Static → INI/YAML file.
+
+Dynamic → pull from AWS/GCP/Azure APIs.
+
+Groups → [webservers], [dbservers].
+
+Host vars → host_vars/, group_vars/.
+
+Variables
+
+Precedence order (highest to lowest):
+command-line vars → playbook vars → role vars → inventory vars → defaults.
+
+Types: host vars, group vars, vars_files, registered vars.
+
+Facts → auto-collected system info (ansible_facts).
+
+Templates (Jinja2)
+
+Use variables in config files.
+
+Example: /etc/httpd/conf/httpd.conf.j2.
+
+Conditionals & Loops
+
+when: ansible_os_family == "Debian"
+loop: "{{ packages }}"
+
+
+Handlers
+
+Triggered only when changed: true.
+
+Example: restart service after config change.
+
+Tags
+
+Run specific tasks only.
+
+ansible-playbook play.yml --tags "setup"
+
+
+Vault
+
+Encrypt sensitive data (passwords, keys).
+
+ansible-vault encrypt secrets.yml
+ansible-vault view secrets.yml
+
+
+Roles
+
+Best practice for reusable code.
+
+Structure:
+
+roles/
+ └── nginx/
+     ├── tasks/
+     ├── handlers/
+     ├── templates/
+     ├── files/
+     ├── vars/
+     └── defaults/
+
+
+✅ Medium concepts prepare you for real team projects.
+
+🔹 3️⃣ Advanced Concepts (FAANG-Level)
+
+Dynamic Inventory
+
+AWS EC2 plugin → aws_ec2.yaml.
+
+GCP, Azure, Kubernetes inventory.
+
+Error Handling
+
+ignore_errors: yes
+
+failed_when: custom conditions.
+
+block, rescue, always.
+
+Idempotency & Check Mode
+
+ansible-playbook play.yml --check → dry run.
+
+changed_when: to define change detection.
+
+Async & Parallel Execution
+
+Run long tasks in background → async, poll.
+
+serial: control batch size.
+
+Ansible Galaxy
+
+Download & publish community roles.
+
+ansible-galaxy install geerlingguy.nginx
+
+
+Callbacks & Plugins
+
+Callback plugins → custom logging/output.
+
+Lookup plugins → fetch secrets, files, env vars.
+
+Ansible Tower / AWX
+
+Web UI + RBAC + job scheduling.
+
+Enterprise-level CI/CD integration.
+
+Testing
+
+Molecule → unit testing roles/playbooks.
+
+ansible-lint → style & syntax checks.
+
+Performance
+
+strategy: free → tasks run as soon as possible.
+
+fact_caching → Redis, JSON, Memcached.
+
+pipelining = True in ansible.cfg for speed.
+
+Security
+
+Vault + external secret managers (HashiCorp Vault, AWS Secrets Manager).
+
+Restricting SSH keys & sudo usage.
+
+✅ These are FAANG interviewer favorites.
+
+🔹 4️⃣ Real-World DevOps Scenarios
+
+Provisioning → Create users, install packages, configure firewalls.
+
+App Deployment → Deploy Nginx, Tomcat, Java apps.
+
+CI/CD → Jenkins pipeline triggers Ansible playbooks.
+
+Hybrid Infra Mgmt → Same playbook for on-prem + cloud.
+
+Patching & Updates → Run monthly patching across 1000+ servers.
+
+Rolling Updates → Update app servers one by one with serial: 1.
+
+Secrets Mgmt → Vault integration for DB passwords.
+
+Immutable Infra → Provision AMIs + configs before baking into Terraform.
+
+Monitoring Setup → Deploy Prometheus + Grafana agents via Ansible.
+
+✅ These scenarios prove hands-on experience.
+
+🔹 5️⃣ Common Interview Questions
+
+What is Ansible? How is it different from Puppet/Chef?
+
+Explain Inventory types (static vs dynamic).
+
+Playbook vs Role → When to use?
+
+Explain variable precedence in Ansible.
+
+What are handlers and when do you use them?
+
+How do you manage secrets in Ansible?
+
+Difference between when condition and register variable usage?
+
+How do you perform rolling updates with Ansible?
+
+What is Ansible Tower/AWX? Benefits?
+
+How do you test Ansible playbooks? (Molecule, ansible-lint).
+
+✅ With this, you now have Ansible Basics → Advanced → Real-World Scenarios → Q&A in one cheat sheet.
