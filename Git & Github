@@ -1,0 +1,163 @@
+🔹 1. Basics (Core Foundations)
+
+Git → Distributed Version Control System (DVCS).
+GitHub → Cloud platform for hosting Git repos + collaboration tools.
+
+Core Concepts
+
+Repository (Repo) → project storage (local/remote).
+
+Commit → snapshot of code (unique SHA).
+
+Branch → independent line of development.
+
+HEAD → pointer to current branch/commit.
+
+Staging Area (Index) → files prepared for commit.
+
+Remote → hosted repo (GitHub/GitLab/Bitbucket).
+
+Essential Commands
+
+git init | clone <url>     # create or copy repo
+git status                 # view changes
+git add .                  # stage changes
+git commit -m "message"    # commit
+git push origin main       # push to remote
+git pull origin main       # fetch + merge remote
+git log --oneline          # history
+git diff                   # show diffs
+
+
+✅ Must-know for daily DevOps work.
+
+🔹 2. Medium-Level Concepts (Team Collaboration)
+
+Branching Strategies
+
+Feature Branching → new features in isolation.
+
+Git Flow → main, develop, feature/*, release/*, hotfix/*.
+
+Trunk-Based → small, frequent merges → CI/CD friendly.
+
+Merging Approaches
+
+Merge Commit → preserves full history.
+
+Rebase → linear history, cleaner logs.
+
+Squash Merge → compress multiple commits into one.
+
+Important Commands
+
+git fetch                 # get latest without merge
+git merge origin/main     # merge remote branch
+git reset --hard <commit> # reset HEAD & working dir
+git revert <commit>       # undo commit (safe)
+git stash / stash apply   # save & restore temp changes
+git tag v1.0.0            # version tag
+
+
+GitHub Features
+
+Pull Requests (PRs) → review + merge workflow.
+
+Issues & Projects → bug tracking & Kanban.
+
+Actions → built-in CI/CD pipelines.
+
+✅ Enables effective collaboration.
+
+🔹 3. Advanced Concepts (FAANG-Level Depth)
+
+Advanced Operations
+
+Cherry-Pick → apply specific commit to another branch.
+
+Bisect → binary search for bug-causing commit.
+
+Worktrees → checkout multiple branches at once.
+
+History Rewriting
+
+git rebase -i HEAD~n → squash/reorder commits.
+
+git commit --amend → modify last commit.
+⚠️ Don’t rewrite shared history.
+
+Hooks
+
+Local automation: pre-commit, pre-push, commit-msg.
+
+Submodules
+
+Manage nested repos → git submodule add <url>.
+
+Large Scale
+
+Git LFS → handle large binaries/media.
+
+Monorepo → multiple projects in one repo.
+
+Security
+
+GPG-signed commits → git commit -S.
+
+Branch protection → prevent force-push.
+
+Dependabot → auto security fixes.
+
+GitHub Enterprise Features
+
+Actions → multi-env CI/CD.
+
+Environments → staging/prod approvals.
+
+Code Owners → enforce reviewers.
+
+GitHub Packages → container/image registry.
+
+✅ These are asked in senior-level interviews.
+
+🔹 4. Real-World DevOps Scenarios
+
+CI/CD Integration → Jenkins/GitHub Actions triggered on PRs.
+
+Branch Protection Rules → mandatory PR reviews + status checks.
+
+Release Management → tags, changelogs, GitHub Releases.
+
+Secrets Management → GitHub Encrypted Secrets for pipelines.
+
+Disaster Recovery → restore with git reflog.
+
+GitOps → ArgoCD/Flux deploy infra from GitHub.
+
+Multi-Team Collaboration → monorepo + PR-based workflows.
+
+Audit & Compliance → signed commits, approval gates.
+
+✅ Shows production-level expertise.
+
+🔹 5. Interview-Favorite Questions
+
+Git vs GitHub?
+
+Explain Git workflow (Working Dir → Staging → Commit → Push).
+
+Merge vs Rebase → when to use each?
+
+git reset vs git revert?
+
+Difference between git fetch & git pull?
+
+How to recover a deleted commit? (git reflog).
+
+How to manage secrets in GitHub Actions?
+
+What is Git LFS and when do you use it?
+
+How to enforce branch protection in GitHub?
+
+How to implement GitOps in production?
