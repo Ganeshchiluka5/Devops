@@ -1,0 +1,200 @@
+🔹 1. Basics (Every DevOps Engineer Must Know)
+
+What is Docker?
+
+Open-source containerization platform.
+
+Packages apps + dependencies into lightweight containers.
+
+Ensures consistency across dev → test → prod.
+
+Core Concepts
+
+Image → blueprint for container (read-only layers).
+
+Container → running instance of image.
+
+Dockerfile → instructions to build image.
+
+Docker Hub → public registry for images.
+
+Volumes → persistent storage for containers.
+
+Network → communication between containers.
+
+Basic Commands
+
+docker --version                  # check version
+docker pull nginx                 # pull image
+docker images                     # list images
+docker run -d -p 8080:80 nginx    # run container
+docker ps -a                      # list containers
+docker stop <id> && docker rm <id> # stop & remove
+docker exec -it <id> bash         # enter container
+docker logs <id>                  # view logs
+
+
+✅ Must-know for daily usage.
+
+🔹 2. Medium-Level Concepts (Practical DevOps Usage)
+
+Dockerfile Basics
+
+FROM → base image.
+
+RUN → execute commands.
+
+COPY / ADD → copy files into image.
+
+WORKDIR → set working dir.
+
+CMD → default execution command.
+
+ENTRYPOINT → main process (overridable).
+
+EXPOSE → ports to be opened.
+
+Image Management
+
+docker build -t myapp:1.0 .
+docker tag myapp:1.0 myrepo/myapp:1.0
+docker push myrepo/myapp:1.0
+
+
+Volumes
+
+Named volumes → managed by Docker.
+
+Bind mounts → map host paths.
+
+tmpfs → in-memory storage.
+
+Networking
+
+Bridge → default (containers on same host).
+
+Host → use host’s networking.
+
+Overlay → multi-host networking (Swarm/K8s).
+
+Docker Compose
+
+Multi-container apps defined in docker-compose.yml.
+
+Example:
+
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+
+✅ Prepares you for real team workflows.
+
+🔹 3. Advanced Concepts (FAANG-Level)
+
+Image Optimization
+
+Use multi-stage builds.
+
+Minimize image size with alpine.
+
+Cache layers for faster builds.
+
+Container Lifecycle
+
+Restart Policies → always, unless-stopped, on-failure.
+
+Healthchecks → monitor container status.
+
+Security
+
+Docker Bench for Security.
+
+Use non-root users inside containers.
+
+Sign images with Docker Content Trust (DCT).
+
+Scan images with Trivy/Clair/Anchore.
+
+Docker Registry
+
+Self-hosted → Harbor, Nexus, Artifactory.
+
+Use private registry with authentication.
+
+Networking Advanced
+
+Custom networks with DNS-based service discovery.
+
+Connect containers across multiple hosts (Overlay + K8s).
+
+Docker Swarm (optional)
+
+Native orchestrator (less popular vs K8s).
+
+Concepts → Services, Tasks, Overlay network.
+
+✅ Covers advanced interviews.
+
+🔹 4. Real-World DevOps Scenarios
+
+CI/CD Pipelines → Jenkins builds Docker image → pushes to registry → deploys to Kubernetes.
+
+Microservices → each service containerized → communicate via bridge/overlay networks.
+
+Persistent Data → mount volumes for DBs (MySQL, MongoDB).
+
+Monitoring → cAdvisor + Prometheus + Grafana.
+
+Logging → Fluentd/EFK stack collects logs from containers.
+
+Security → image scanning + non-root containers.
+
+Blue-Green Deployment → switch between container versions.
+
+Disaster Recovery → backup volumes + rebuild containers from images.
+
+✅ Shows real-world production expertise.
+
+🔹 5. Common Interview Questions
+
+Difference between Image and Container?
+
+Docker vs Virtual Machine?
+
+Explain a Dockerfile workflow.
+
+CMD vs ENTRYPOINT?
+
+What are Docker volumes? Why use them?
+
+How do you optimize Docker images?
+
+Explain Docker networking types.
+
+Docker Compose vs Kubernetes?
+
+How do you secure Docker containers?
+
+How do you handle secrets in Docker?
+
+Difference between Docker Swarm and Kubernetes?
+
+How do you integrate Docker with Jenkins?
+
+How do you monitor Docker containers?
+
+How do you troubleshoot a failing container?
+
+How do you implement Blue-Green deployment with Docker?
+
+✅ With this, you’ll handle any Docker interview confidently.
+💡 Example pitch:
+“In Gamazon project, we containerized microservices using Docker. Jenkins pipelines built images, pushed them to AWS ECR, and deployed on Kubernetes. We used multi-stage builds for optimization, Trivy for scanning, and mounted EBS volumes for persistent DB storage. Monitoring was done via cAdvisor + Prometheus + Grafana.”
