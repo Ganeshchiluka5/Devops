@@ -1,0 +1,247 @@
+🔹 1. Basics (Core Foundations)
+
+What is Jenkins?
+
+Open-source automation server for CI/CD.
+
+Written in Java, extensible with plugins (1800+).
+
+Automates build → test → deploy → monitor pipelines.
+
+Core Components
+
+Job / Project → unit of work (freestyle, pipeline, multibranch).
+
+Build → execution of a job.
+
+Executor → processing slot for a job.
+
+Node / Agent → machine running jobs.
+
+Master / Controller → orchestrates jobs, UI, scheduling.
+
+Workspace → directory where job runs.
+
+Basic Workflow
+
+Dev pushes code → GitHub/GitLab/Bitbucket.
+
+Jenkins fetches code → builds → tests.
+
+Artifacts → Docker images, JAR/WAR, packages.
+
+Deploy to servers → Kubernetes, AWS, Azure.
+
+Essential CLI Commands
+
+jenkins-cli.jar -s http://localhost:8080 list-jobs
+jenkins-cli.jar -s http://localhost:8080 build my-job
+jenkins-cli.jar -s http://localhost:8080 get-job my-job
+jenkins-cli.jar -s http://localhost:8080 create-job new-job < config.xml
+
+
+✅ Must-know foundation.
+
+🔹 2. Medium-Level Concepts (Team Usage)
+
+Types of Jobs
+
+Freestyle Job → quick setup, GUI-based.
+
+Pipeline Job → Jenkinsfile (Groovy DSL).
+
+Multibranch Pipeline → auto-detect branches/PRs.
+
+Matrix Job → build/test across OS/JDK versions.
+
+Pipeline Types
+
+Declarative Pipeline (preferred, structured).
+
+Scripted Pipeline (flexible, Groovy-based).
+
+Triggers
+
+SCM Polling → check repo every X minutes.
+
+Webhooks → GitHub/GitLab events.
+
+Cron Scheduling → scheduled builds.
+
+Manual Triggers → "Build Now" button.
+
+Artifacts
+
+Archive JAR/WAR/logs → shared across builds.
+
+Push artifacts to Nexus/Artifactory/S3.
+
+Plugins (Must-Know)
+
+Git, GitHub, GitLab, Bitbucket.
+
+Maven, Gradle, npm.
+
+Docker, Kubernetes, Helm.
+
+SonarQube, Checkstyle (code quality).
+
+Slack, Email, Teams (notifications).
+
+Credentials Management
+
+Jenkins Credentials Store.
+
+Types: username/password, SSH key, secret text, AWS keys.
+
+Access via withCredentials{} in pipelines.
+
+✅ Daily Jenkins usage.
+
+🔹 3. Advanced Concepts (FAANG-Level)
+
+Pipeline Advanced
+
+Stages & Steps → build, test, deploy.
+
+Parallel Stages → speed up jobs.
+
+Post Actions → always, success, failure.
+
+Shared Libraries → reusable pipeline code across teams.
+
+Dynamic Agents → spin up Docker/Kubernetes agents on demand.
+
+Scaling Jenkins
+
+Master-Agent Architecture:
+
+Master schedules jobs, agents execute.
+
+Static agents (VMs, bare-metal).
+
+Ephemeral agents (Docker, Kubernetes).
+
+Cloud Auto-Scaling → AWS EC2, Azure VMSS, GCP.
+
+Security
+
+RBAC (Role-Based Access Control).
+
+Matrix Authorization → fine-grained perms.
+
+Masking Secrets in Console Output.
+
+API Tokens instead of passwords.
+
+Integrate Vault for external secrets.
+
+Distributed Builds
+
+Large projects → split stages across agents.
+
+Docker-in-Docker → isolated builds.
+
+Integration
+
+CI → automated tests (JUnit, pytest).
+
+CD → deploy with Ansible, Helm, Terraform.
+
+GitOps → Jenkins triggers ArgoCD/Flux.
+
+High Availability (HA)
+
+Backup JENKINS_HOME (jobs, configs, plugins).
+
+Run Jenkins in Kubernetes with Operator.
+
+HA → multiple controllers + external DB.
+
+Observability
+
+Integrate with Prometheus + Grafana (Jenkins Exporter).
+
+Centralized logs → ELK/EFK stack.
+
+Notifications → Slack/MS Teams.
+
+✅ These topics separate juniors from seniors.
+
+🔹 4. Real-World DevOps Scenarios
+
+End-to-End CI/CD → Jenkins pipeline builds Docker image, pushes to ECR/GCR, deploys to EKS with Helm.
+
+Blue-Green Deployment → Jenkins pipeline swaps traffic between old/new versions.
+
+Canary Release → partial rollout with monitoring.
+
+Security Scans → Jenkins + SonarQube + Trivy + OWASP.
+
+Secrets Management → Jenkins + Vault/SSM.
+
+Pipeline as Code → Jenkinsfile in Git repo.
+
+Multi-Branch Pipelines → auto-build PRs.
+
+GitHub Actions + Jenkins → Actions for tests, Jenkins for infra.
+
+Cost Optimization → dynamic Kubernetes agents.
+
+Disaster Recovery → restore from backup, rebuild plugins.
+
+✅ These are production-grade practices.
+
+🔹 5. Extra Advanced (Rare but Asked)
+
+Jenkins X → Kubernetes-native Jenkins.
+
+Terraform + Jenkins → IaC automation.
+
+Jenkinsfile Best Practices
+
+Small reusable steps.
+
+Fail fast with set -e.
+
+Use parallel where possible.
+
+Audit Logs → security compliance.
+
+Pipeline Libraries → versioned Groovy libraries.
+
+🔹 6. Common Interview Questions
+
+What is Jenkins and why do we use it?
+
+Difference between Freestyle, Pipeline, and Multibranch jobs?
+
+Declarative vs Scripted pipeline?
+
+How do you secure credentials in Jenkins?
+
+Difference between master and agent?
+
+How do you scale Jenkins in production?
+
+Explain Blue-Green/Canary deployment with Jenkins.
+
+Jenkins vs GitHub Actions vs GitLab CI vs CircleCI?
+
+How do you implement Jenkins HA?
+
+How do you handle disaster recovery?
+
+How do you monitor Jenkins?
+
+How do you integrate Jenkins with Kubernetes/Docker/Terraform?
+
+How do you optimize slow pipelines?
+
+How do you enforce code quality gates in Jenkins?
+
+How do you prevent secrets leakage in logs?
+
+✅ With this → you’re Jenkins interview-ready at FAANG-level.
+💡 Sample answer to impress:
+“We used Jenkins pipeline (declarative) stored in GitHub repo. Jenkins triggered via webhooks, built Docker images, pushed to ECR, and deployed on EKS using Helm. We secured credentials with Vault, monitored Jenkins via Prometheus/Grafana, and scaled agents dynamically on Kubernetes. For deployments, we used Canary strategy with automated rollback if health checks failed.”khukgu
