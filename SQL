@@ -1,0 +1,73 @@
+1️⃣ Basic SQL (FAANG Style)
+
+Focus: Core CRUD, filtering, aggregation, and simple joins.
+
+Concept	Syntax / Example	Interview Pattern / Tips
+CRUD Operations	INSERT INTO Employees VALUES(1, 'Ganesh');
+SELECT * FROM Employees;
+UPDATE Employees SET name='Rachana' WHERE id=1;	Practice queries on small tables; common for warm-up questions.
+Filtering / Sorting	SELECT * FROM Employees WHERE id>5 ORDER BY salary DESC LIMIT 5;	Often asked with WHERE + ORDER BY + LIMIT.
+Aggregate Functions	SELECT COUNT(*), AVG(salary) FROM Employees;	GROUP BY simple aggregations.
+GROUP BY / HAVING	SELECT dept, COUNT(*) FROM Employees GROUP BY dept HAVING COUNT(*)>5;	Common in “top N per group” type questions.
+Joins	INNER JOIN, LEFT JOIN
+SELECT * FROM E INNER JOIN D ON E.dept_id=D.id;	Must know join types for questions like “employees with/without projects”.
+Constraints	PRIMARY KEY, UNIQUE, NOT NULL	Sometimes asked about table design.
+Data Types	INT, VARCHAR, DATE, BOOLEAN, DECIMAL	Know correct types for queries & interview questions.
+NULL Handling	IS NULL, COALESCE(col, 0)	Important for edge cases.
+String / Date / Math Functions	CONCAT(), SUBSTRING(), LENGTH(), ROUND(), NOW()	Often used in query transformations.
+
+Tip: FAANG rounds often start with small table exercises (20–50 rows) to test joins, filtering, aggregation.
+
+2️⃣ Medium SQL (FAANG Style)
+
+Focus: Optimized queries, subqueries, window functions, indexing, and transactions.
+
+Concept	Syntax / Example	Interview Pattern / Tips
+Advanced Joins	RIGHT / FULL OUTER / SELF / CROSS JOIN	FAANG often asks “employees with no manager” → LEFT JOIN + IS NULL.
+Subqueries / Nested Queries	SELECT name FROM Employees WHERE id IN (SELECT emp_id FROM Projects);	Often used in “find related rows” type questions.
+Window Functions	ROW_NUMBER() OVER(PARTITION BY dept ORDER BY salary DESC)	Top N per group, ranking problems.
+Set Operations	UNION / INTERSECT / EXCEPT	Useful for deduplicating or comparing datasets.
+Indexes	CREATE INDEX idx_name ON Employees(name);	FAANG asks “optimize this query” questions; explain index usage.
+Transactions	BEGIN / COMMIT / ROLLBACK	Edge case handling; critical for concurrency questions.
+Views	CREATE VIEW EmployeeView AS SELECT name, dept FROM Employees;	Useful to simplify query patterns.
+Conditional Logic	CASE WHEN … THEN … ELSE END	FAANG loves “conditional aggregation” questions.
+Temporary Tables	CREATE TEMPORARY TABLE temp AS SELECT …	Optimize complex multi-step queries.
+Set Membership / EXISTS	IN, EXISTS	FAANG often tests anti-joins: employees NOT in projects.
+Background Jobs / Cron Jobs	Not directly SQL, but can be part of discussion in large-scale systems.	Optional for discussion questions.
+
+Tip: FAANG interviews like nested queries, ranking, top-k per group, and edge case handling.
+
+3️⃣ Advanced SQL (FAANG Style)
+
+Focus: High-scale, performance, analytical queries, recursive queries, JSON/OLAP.
+
+Concept	Syntax / Example	Interview Pattern / Tips
+Recursive Queries / CTEs	WITH RECURSIVE mgrs AS (SELECT id, manager_id FROM Employees WHERE manager_id IS NULL UNION ALL SELECT E.id, E.manager_id FROM Employees E JOIN mgrs M ON E.manager_id=M.id) SELECT * FROM mgrs;	Hierarchy problems: org charts, bill-of-materials.
+Advanced Window Functions	NTILE(), CUME_DIST(), PERCENT_RANK()	Analytical queries: percentiles, quartiles.
+Pivot / Unpivot	Transform rows ↔ columns	FAANG asks “monthly sales per product per region”.
+Materialized Views	Precomputed tables for speed	Optimization question for large datasets.
+Full-text / JSON Queries	JSON_EXTRACT(data, '$.key'), MATCH() AGAINST()	Often asked in NoSQL / semi-structured data scenarios.
+Locking & Concurrency	Row-level / table-level locks	Edge cases: race conditions, multi-user updates.
+Partitioning / Sharding	Horizontal / vertical partitioning	Large dataset handling; FAANG sometimes asks design + query optimization.
+Advanced Transactions / Isolation Levels	READ COMMITTED / SERIALIZABLE	Prevent dirty / non-repeatable reads.
+Query Optimization	EXPLAIN / EXPLAIN ANALYZE	FAANG interview “optimize this slow query”.
+Data Warehousing / OLAP	Star schema, fact/dimension tables	Analytical queries over large data.
+Stored Procedures / Functions	Loops, cursors, dynamic SQL	Sometimes FAANG asks “implement this logic in SQL procedure”.
+
+Tip: FAANG focuses on performance, scalability, ranking/top-k, recursive queries, and analytical queries in advanced rounds.
+
+FAANG SQL Interview Patterns
+
+Small table queries → joins, filtering, aggregation.
+
+Top-N / ranking → ROW_NUMBER(), RANK(), window functions.
+
+Hierarchical queries → recursive CTEs.
+
+Anti-joins / missing data → LEFT JOIN + IS NULL or NOT EXISTS.
+
+Optimizing queries → indexes, explain plans, partitioning.
+
+Analytics / OLAP style → pivot/unpivot, cumulative sums, moving averages.
+
+Semi-structured / JSON → extract fields, filter, aggregate.
