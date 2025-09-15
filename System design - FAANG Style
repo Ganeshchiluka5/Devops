@@ -1,0 +1,104 @@
+System Design Notes – Basics → Advanced
+1️⃣ Basics
+
+Scalability: Handle growth; vertical (scale-up) vs horizontal (scale-out).
+
+Reliability: System works correctly; handle errors & retries.
+
+Availability: % uptime; 99.9% → ~8.76 hrs downtime/year.
+
+Latency & Throughput: Response time vs requests/sec.
+
+Caching: Reduce DB/API load; Redis, Memcached, CDN.
+
+Load Balancing: Distribute traffic; round-robin, least connections.
+
+Database Basics: SQL vs NoSQL; indexes improve query speed.
+
+CAP Theorem: Pick 2 of consistency, availability, partition tolerance.
+
+Proxy Servers: Routing, caching; Nginx, HAProxy.
+
+DNS Basics: Domain → IP; TTL, DNS load balancing.
+
+Sticky Sessions: Maintain session with load balancer.
+
+HTTP & Status Codes: GET/POST/PUT/DELETE, 200/404/500.
+
+Connection Pooling: Efficient DB connection management.
+
+2️⃣ Intermediate
+
+Sharding / Partitioning: Split DB horizontally (userID/region).
+
+Replication: High availability; master-slave, multi-master.
+
+Message Queues: Async processing; Kafka, RabbitMQ, SQS.
+
+Rate Limiting / Throttling: Prevent API abuse.
+
+Monitoring & Logging: Observe health; Prometheus, Grafana, ELK.
+
+Consistent Hashing: Evenly distribute keys (cache sharding).
+
+Data Modeling: Normalize vs denormalize for efficiency.
+
+Replication Lag / Eventual Consistency: Reads may lag behind master.
+
+Bloom Filters: Fast “exists” check; cache filtering.
+
+Leader-Follower Pattern: Manage replication/failover.
+
+Background Jobs / Cron Jobs: Async heavy tasks (emails, batch jobs).
+
+Indexing Strategies: Composite/full-text indexes for faster queries.
+
+Soft Deletes / Archival: Mark deleted data; handle historical data.
+
+Circuit Breakers / Retry Patterns: Prevent cascading failures.
+
+3️⃣ Advanced
+
+Microservices: Modular services; Netflix, Amazon.
+
+Distributed Systems: Consensus (Paxos/Raft), fault tolerance.
+
+Event-driven Architecture: Async communication; Kafka/Kinesis.
+
+Database Scaling: Multi-region replication, geo-distributed DBs.
+
+CQRS / Event Sourcing: Separate read/write; immutable events.
+
+CDNs / Edge Computing: Reduce latency; CloudFront, Akamai.
+
+API Rate Limiting & Circuit Breakers: Hystrix, Resilience4j.
+
+Security & Compliance: OAuth, JWT, GDPR, HIPAA.
+
+Disaster Recovery (DR): RPO (data loss), RTO (downtime); multi-region failover.
+
+Scaling Challenges: Bottlenecks (DB, CPU, network), hotspots.
+
+Distributed Transactions: Two-phase commit; atomicity across services.
+
+Leader Election: Raft/Paxos for distributed consensus.
+
+Vector Clocks / Conflict Resolution: Event ordering in distributed systems.
+
+Service Discovery: Auto-detect instances; Consul, Eureka.
+
+Advanced Caching: Write-through, write-back, write-around.
+
+Observability: Metrics + logs + tracing; Prometheus + Grafana + Jaeger.
+
+Data Warehousing / Analytics: Redshift, BigQuery, Spark pipelines.
+
+💡 Pro Tip for Interviews:
+
+Always clarify requirements first (scale, users, latency, consistency).
+
+Use real-world examples: URL shortener, WhatsApp, Netflix.
+
+Discuss trade-offs: latency vs consistency, cost vs performance.
+
+Draw architecture diagrams for clarity (LB → app servers → DB → cache → queue).
